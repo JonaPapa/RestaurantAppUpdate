@@ -1,0 +1,85 @@
+MDScreen:
+    md_bg_color : [28/255,22/255,96/255,1]
+
+    MDCard:
+        size_hint : None, None
+        size: 320, 650
+        pos_hint : {"center_x": 0.5, "center_y": 0.5}
+        elevation : 15
+        md_bg_color : [51/255,46/255,96/255,1]
+        padding: 20
+        spacing: 30
+        orientation: "vertical"
+
+        MDLabel:
+            text: 'LOGIN'
+            font_style: 'Button'
+            font_size: 45
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+
+        MDTextField:
+            id: username
+            hint_text: "Username"
+            icon_right: "account"
+            size_hint_x: None
+            width: 220
+            font_size: 20
+            pos_hint: {"center_x": 0.5}
+            color_active: [1,1,1,1]
+            on_text: self.text = self.text.replace(" ", "")
+            write_tab: False
+            
+        MDTextField:
+            id: passw
+            hint_text: "Password"
+            password: True
+            icon_right: "eye-off"
+            size_hint_x: None
+            width: 220
+            font_size: 20
+            pos_hint: {"center_x": 0.5}
+            color_active: [1,1,1,1]
+            write_tab: False
+            on_text: self.text = self.text.replace(" ", "")
+            write_tab: False
+        BoxLayout:
+            size_hint: 0.85, None
+            height: 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            spacing: 5
+
+            MDCheckbox:
+                id: checkbox
+                size_hint: None, None
+                width: 40
+                height: 40
+                pos_hint: {"center_x": 0.5, "center_y": 0.4}
+                on_press:
+                    passw.password = False if passw.password == True else True
+                    passw.icon_right = "eye" if passw.icon_right == "eye-off" else "eye-off"
+                
+            MDLabel:
+                text: "Show Password"
+                markup: True
+                pos_hint: {"center_x": 0.5, "center_y": 0.4}
+                on_ref_press:
+                    checkbox.active = False if checkbox.active == True else True
+                    passw.password = False if passw.password == True else True
+                    assw.icon_right = "eye" if passw.icon_right == "eye-off" else "eye-off"
+
+        MDRoundFlatButton:
+            text: 'SIGN-UP'
+            pos_hint: {"center_x": 0.5}
+            font_size: 15
+        
+        MDRoundFlatButton:
+            text: 'SIGN-IN'
+            pos_hint: {"center_x": 0.5}
+            font_size: 15
+
+        Widget:
+            size_hint_y: None
+            height: 5
