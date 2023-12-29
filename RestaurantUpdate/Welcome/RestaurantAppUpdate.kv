@@ -1,6 +1,12 @@
-MDScreen:
-    md_bg_color : [28/255,22/255,96/255,1]
+ScreenManagement:
+    Login:
+    HomeScreen:
 
+<Login>:
+    name: 'main'
+
+    MDScreen:
+        md_bg_color : [28/255,22/255,96/255,1]
     MDCard:
         size_hint : None, None
         size: 320, 650
@@ -74,12 +80,26 @@ MDScreen:
             text: 'SIGN-UP'
             pos_hint: {"center_x": 0.5}
             font_size: 15
+            on_release:
+                root.manager.current = 'secondary'
         
         MDRoundFlatButton:
             text: 'SIGN-IN'
             pos_hint: {"center_x": 0.5}
             font_size: 15
+            on_release:
+                root.manager.current = 'secondary'
 
         Widget:
             size_hint_y: None
             height: 5
+
+
+<HomeScreen>:
+    name: 'secondary'
+    MDScreen:
+        md_bg_color: [1, 1, 1, 1]  # White 
+        MDLabel:
+            text: 'HOME SCREEN'
+            halign: 'center'
+    
