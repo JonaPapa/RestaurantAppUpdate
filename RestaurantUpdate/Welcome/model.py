@@ -1,32 +1,62 @@
-class Department: 
-    def __init__(self, name, employee_list) -> None:
-        self.__name = name
-        self.__employee_list = employee_list
+from enum import Enum
 
-    @property # helps us to put a value into an attribute like it is a variable, so no need for getters
+class Restaurant:
+    def __init__(self, name, info_list, menu_list, table_list, menuitem_list) -> None:
+        self.__name = name
+        #self.__address = address
+        self.__info_list = info_list
+        self.__menu_list = menu_list
+        self.__table_list = table_list
+        self.__menuitem_list = menuitem_list
+
+    @property 
     def name(self):
         return self.__name
-    
-    @name.setter #now we go for a setter
+    @name.setter 
     def name(self, name):
         self.__name = name
 
-    @property 
-    def employee_list(self):
-        return self.__employee_list
-    
-    @employee_list.setter 
-    def employee_list(self, employee_list):
-        self.__employee_list = employee_list
+    '''@property 
+    def address(self):
+        return self.__address
+    @address.setter 
+    def address(self, address):
+        self.__address = address'''
 
-#Class that will deal the employee info
-    
-class Employee:
-    def __init__(self, name, address, emial, phone_nr) -> None:
+    @property 
+    def info_list(self):
+        return self.__info_list
+    @info_list.setter 
+    def info_list(self, info_list):
+        self.__info_list = info_list
+
+
+    @property 
+    def menu_list(self):
+        return self.__menu_list
+    @menu_list.setter 
+    def menu_list(self, menu_list):
+        self.__menu_list = menu_list
+
+    @property 
+    def table_list(self):
+        return self.__table_list
+    @table_list.setter 
+    def table_list(self, table_list):
+        self.__table_list = table_list
+
+    @property 
+    def menuitem_list(self):
+        return self.__menuitem_list
+    @menuitem_list.setter 
+    def menuitem_list(self, menuitem_list):
+        self.__menuitem_list = menuitem_list
+
+class Info:
+    def __init__(self, name, address) -> None:
         self.__name = name
         self.__address = address
-        self.__email = emial
-        self.__phone_nr = phone_nr
+        
 
     @property 
     def name(self):
@@ -42,25 +72,12 @@ class Employee:
     def address(self, address):
         self.__address = address
     
-    @property 
-    def emial(self):
-        return self.__email
-    @emial.setter 
-    def email(self, email):
-        self.__email = email
-    
-    @property 
-    def phone_nr(self):
-        return self.__phone_nr
-    @phone_nr.setter 
-    def phone_nr(self, phone_nr):
-        self.__phone_nr = phone_nr
-
 class User:
 
-    def __init__(self, username, password) -> None:
+    def __init__(self, username, password, user_role) -> None:
         self.__username = username
         self.__password = password
+        self.__user_role = user_role
     
     @property 
     def username(self):
@@ -76,40 +93,14 @@ class User:
     def password(self, password):
         self.__password = password
 
-class Restaurant:
-    def __init__(self, name, address, menu_list, table_list) -> None:
-        self.__name = name
-        self.__address = address
-        self.__menu_list = menu_list
-        self.__table_list = table_list
+    @property
+    def user_role(self):
+        return self.__user_role
+    @user_role.setter
+    def user_role(self, user_role):
+        self.__user_role = user_role
 
-    @property 
-    def name(self):
-        return self.__name
-    @name.setter 
-    def name(self, name):
-        self.__name = name
 
-    @property 
-    def address(self):
-        return self.__address
-    @address.setter 
-    def address(self, address):
-        self.__address = address
-
-    @property 
-    def menu_list(self):
-        return self.__menu_list
-    @menu_list.setter 
-    def menu_list(self, menu_list):
-        self.__menu_list = menu_list
-
-    @property 
-    def table_list(self):
-        return self.__table_list
-    @table_list.setter 
-    def table_list(self, table_list):
-        self.__table_list = table_list
 
 class Table:
     def __init__(self, id, seats):
@@ -132,49 +123,58 @@ class Table:
     
     
 class Menu:
-    def __init__(self, name, menu_item_list) -> None:
+    def __init__(self, name, menu_section, menuitem_list) -> None:
         
         self.__name = name
-        self.__menu_item_list = menu_item_list
+        self.__menu_section = menu_section
+        self.__menuitem_list = menuitem_list
 
     @property 
     def name(self):
         return self.__name
     @name.setter 
-    def name(self, name):
-        self.__name = name
+    def name(self, value):
+        self.__name = value
 
     @property
-    def menu_item_list(self):
-        return self.__menu_item_list
-    @menu_item_list.setter
-    def menu_item_list(self, menu_item_list):
-        self.__menu_item_list = menu_item_list
+    def menu_section(self):
+        return self.__menu_section
+    @menu_section.setter
+    def menu_section(self, value):
+        self.__menu_section = value
+
+    @property
+    def menuitem_list(self):
+        return self.__menuitem_list
+    @menuitem_list.setter
+    def menuitem_list(self, value):
+        self.__menuitem_list = value
 
 class MenuItem:
-    def __init__(self, id, name, price):
-        self.__id = id
+    def __init__(self, name, description, food):
+        
         self.__name = name
-        self.__price = price
-
-    @property
-    def id(self):
-        return self.__id
-    @id.setter
-    def id(self, id):
-        self.__id = id
+        self.__description = description
+        self.__food = food
 
     @property 
     def name(self):
         return self.__name 
     @name.setter
-    def name(self, name):
-        self.__name = name
+    def name(self, value):
+        self.__name = value
         
     @property
-    def price(self):
-        return self.__price
-    @price.setter
-    def price(self, price):
-        self.__price = price
+    def description(self):
+        return self.__description
+    @description.setter
+    def description(self, value):
+        self.__description = value
+        
+    @property
+    def food(self):
+        return self.__food
+    @food.setter
+    def food(self, value):
+        self.__food = value
         
